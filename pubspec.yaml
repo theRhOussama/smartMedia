@@ -84,6 +84,11 @@ flutter:
     - assets/remoteTeam.svg
     - assets/statistics.svg
     - assets/profile.svg
+    - assets/social.svg
+    - assets/social.png
+    - assets/wohow.jpg
+    - assets/payme.jpg
+
 
 
   #   - images/a_dot_ham.jpeg

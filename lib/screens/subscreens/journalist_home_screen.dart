@@ -1,5 +1,11 @@
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:smartmedia/utils/colors.dart';
 
 class JournalistHomeScreen extends StatefulWidget {
@@ -12,126 +18,144 @@ class JournalistHomeScreen extends StatefulWidget {
 class _JournalistHomeScreenState extends State<JournalistHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        Expanded(
-          child: Stack(children: [
-            Container(
-              color: white,
-              child: SizedBox(
-                child: Stack(
+    return SingleChildScrollView(
+      child: Column(
+
+        children: [
+          Container(
+            height: 300,
+            width: double.infinity,
+             
+            color: darkColor,
+            child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child:Column(
                   children: [
-                    Opacity(
-                      opacity: 0.9,
-                      child: ClipPath(
-                          clipper: WaveClipper(),
-                          child: Container(
-                            color: secondColor,
-                            height: 160,
-                          )),
-                    ),
-                    ClipPath(
-                        clipper: WaveClipper(),
-                        child: Container(
-                          color: secondColor,
-                          height: 140,
-                        )),
+                 
+                        Expanded(
+                          flex: 3,
+                          child:  Image.asset('assets/social.png',height: 250)),
+                          
                   ],
-                ),
-              ),
-            ),
-          ]),
-        ),
-        Expanded(
-          flex: 2,
-          child: Container(
-            height: 200,
+
+                ) ),
+                    Expanded(
+                      
+                      flex: 1,
+                      child:Container(
+                          margin:EdgeInsets.only(right: 5),
+                         alignment: Alignment.center,
+                        child: const Text(
+                          "كصحفي نشر الصور او مقاطع فيديو سيسمح لك بصناعه محتوى يتير رغبه القارء في التفاعل و كسب  متابعين" ,
+                          textAlign: TextAlign.right,
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(color: white,decorationStyle: TextDecorationStyle.double),)) )
+
+            ],
+            )
+          ),
+          Container(
+            width: double.infinity,
+            color: darkColor,
+            child: Center(child: ElevatedButton.icon(onPressed: (){},icon:Icon(Icons.camera_indoor_outlined), label: Text("نشر صوره"),) ),),
+   
+             Container(
+          color: darkColor,
+          child: Image.asset("assets/wohow.jpg",width:double.infinity ,height: 200,)),
+          
+            Container(
+            height: 300,
+            width: double.infinity,
+             
+            color: darkColor,
+            child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child:Column(
+                  children: [
+                 
+                        Expanded(
+                          flex: 3,
+                          child:  SvgPicture.asset('assets/test1.svg',height: 150)),
+                     
+                  ],
+
+                ) ),
+                    Expanded(
+                      
+                      flex: 1,
+                      child:Container(
+                          margin:EdgeInsets.only(right: 5),
+                         alignment: Alignment.center,
+                        child: const Text(
+                         'كتابه مقال هي خاصيه ستسمح لك كصحفي أن تعالج موضوع   بتفاصيله ، تعطيكم هته الخاصيه مجموعه من الأدوات  ستسمح لكم  بالتوصل لاكبر عدد من القراء' ,
+                          textAlign: TextAlign.right,
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(color: white,decorationStyle: TextDecorationStyle.double),)) )
+
+            ],
+            )
+          ),
+          Container(
+            width: double.infinity,
+            color: darkColor,
+            child: Center(child: ElevatedButton.icon(onPressed: (){},icon:Icon(Iconsax.document1,color: white,), label: Text("كتابه مقال"),) ),),
+                 Container(
+            height: 300,
+            width: double.infinity,
+             
             color: white,
-            child: Row(children: [
-              Center(
-                  child: SvgPicture.asset(
-                'assets/remoteTeam.svg',
-                height: 130,
-                alignment: Alignment.center,
-              )),
-              TextButton.icon(
-                icon: const Icon(Icons.cloud_upload,
-                    color: secondColor,
-                    size: 48,
-                    textDirection: TextDirection.rtl),
-                label: const Text(
-                  'أنشر مقالك',
-                  style: TextStyle(
-                      color: secondColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {},
-              ),
-            ]),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Container(
-            height: 150,
-            color: secondColor,
-            child: Row(children: [
-              Center(
-                  child: SvgPicture.asset(
-                'assets/statistics.svg',
-                height: 130,
-                alignment: Alignment.center,
-              )),
-              TextButton.icon(
-                icon: const Icon(Icons.align_vertical_bottom_rounded,
-                    color: Colors.orange,
-                    size: 48,
-                    textDirection: TextDirection.rtl),
-                label: const Text(
-                  'الرصيد الحالي',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                onPressed: () {},
-              ),
-            ]),
-          ),
-        ),
-      ],
-    ));
-  }
-}
+            child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child:Column(
+                  children: [
+                 
+                        Expanded(
+                          flex: 3,
+                          child:  Image.asset('assets/payme.jpg',height: 250)),
+                          
+                  ],
 
-class WaveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    debugPrint(size.width.toString());
-    var path = new Path();
-    path.lineTo(
-        0, size.height); //start path with this if you are making a curve
-    var firstStart = Offset(size.width / 5, size.height);
-    //fist point of quadratic bezier curve
-    var firstEnd = Offset(size.width / 2.25, size.height - 50.0);
-    //second pint of quadratic bezier curve
-    path.quadraticBezierTo(
-        firstStart.dx, firstStart.dy, firstEnd.dx, firstEnd.dy);
-    var secondStart =
-        Offset(size.width - (size.width / 3.24), size.height - 105);
-    var secondEnd = Offset(size.width, size.height - 10);
-    path.quadraticBezierTo(
-        secondStart.dx, secondStart.dy, secondEnd.dx, secondEnd.dy);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
+                ) ),
+                    Expanded(
+                      
+                      flex: 1,
+                      child:Container(
+                        color:white,
+                          padding: EdgeInsets.only(right: 25),
+                         alignment: Alignment.center,
+                        child: Column(
+                          children:[   
+                            const SizedBox(height: 100,),
+                             ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(padding: EdgeInsets.all(5),primary: Colors.blue[600]),
+                              onPressed: (){},icon:Icon(Icons.ads_click,color: white,), label: Text("انقر هنا"),),
+                             SizedBox(height: 10,),
+                             ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.orange[800]
+                              ),
+                              onPressed: (){},icon:Icon(Icons.info,color: white,), label:
+                              Text("تفاصيل أكتر",style: TextStyle(fontSize: 12),)),
+                            
+                             SizedBox(height: 80,)
+                            ]
+                       
+                        )
+                          )
+                           )
 
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    throw UnimplementedError();
+            ],
+            )
+          ),
+         
+        ],
+      ),
+    );
   }
 }

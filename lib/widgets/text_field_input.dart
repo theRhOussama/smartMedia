@@ -73,8 +73,8 @@ tileColor: Colors.deepPurple.shade50,
           return 'المرجو ملء الخانه';
 
         }
-          else if(value!.isEmpty || value.length<=9){
-            return'طول القن السري يجب أن يتعدى 9';
+          else if(value!.isEmpty || value.length<6){
+            return'طول القن السري يجب أن يتعدى 6';
           }
           else {
               return null;

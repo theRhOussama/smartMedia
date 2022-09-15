@@ -13,9 +13,11 @@ class AuthMethods {
   Future<model.User>getUserDetails()async{
     User  currentUser = _auth.currentUser!;
     DocumentSnapshot snap= await _firestore.collection('users').doc(currentUser.uid).get();
-    return   model.User.reversDocumentTosnap(snap);
-   
 
+        
+
+print('----------------------------------${snap.exists}------------------------------0000----');
+    return   model.User.reversDocumentTosnap(snap);
   }
 
   //sign up user

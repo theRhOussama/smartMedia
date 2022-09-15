@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
     child: MaterialApp(
     debugShowCheckedModeBanner: false,
         routes: {
-          '/journalist/addArticle':(context)=>const  AddArticleLayout()
+          '/journalist/addArticle':(context)=>  AddArticleLayout()
         },
       color: white,
      title: 'Demo Smart Media Application',
@@ -65,9 +65,10 @@ class Home extends StatelessWidget {
           if(snapshot.connectionState == ConnectionState.active)
           {
             if(snapshot.hasData){
+              
               return const ResponsiveLayout(WebScreenLayout: WebScreen(), mobileScreenLayout: MobileScreenLayout());
             } else if(snapshot.hasError){
-              return Center(child: Text('${snapshot.error}')
+              return Center(child: Text('------ERROR ERROR ERROR CHECK IT CHECK IT CHECK IT ERROR ERROR ERROR CHECKIT THE FOKING ERROR PLEASE OR NOTHING WILL WORK AS EXCEPTED / Type of error is : -----------${snapshot.error}----------------------------------------------------')
               );
             }
           }
@@ -75,7 +76,7 @@ class Home extends StatelessWidget {
 
             return  const Center(
               child: CircularProgressIndicator(
-                color: primaryColor,
+                color: secondColor,
 
               ) ,
             );

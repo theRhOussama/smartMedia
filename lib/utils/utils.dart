@@ -6,9 +6,14 @@ pickImage(ImageSource source)async{
 
   XFile? _file = await _imagePicker.pickImage(source: source);
   if(_file!= null){
+
+    
     return await _file.readAsBytes();
+    
   }
-  print('No image selected');
+    else {
+      return null;
+    }
 }
 showSnackBar(String content,BuildContext context)
 {
@@ -18,9 +23,9 @@ showSnackBar(String content,BuildContext context)
 }
 showImage(var img) {
   if(img !=null){
-    return MemoryImage(img);
+    return true;
   }
   else {
-   return null;
+   return false;
   }
 }

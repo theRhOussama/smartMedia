@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:smartmedia/ressources/auth_method.dart';
 import 'package:smartmedia/screens/login_screen.dart';
  import 'package:smartmedia/utils/utils.dart';
-import 'package:smartmedia/utils/validation_form.dart';
+ 
 import 'package:smartmedia/widgets/text_field_input.dart';
 
 import '../responsive/mobilescreen_layout.dart';
@@ -38,7 +38,7 @@ UserTypeEnum? _userTypeEnum;
                   final  TextEditingController _typeOfuser= TextEditingController();
                   Uint8List? _image ;
 
-                  UserFormValidation userValidator = UserFormValidation();
+                   
     Future     register() async{
       
              AuthMethods().signUpUser( typeOfuser: _typeOfuser.text,  email: _emailInputController.text, password: _passwordInputController.text, username: _usernameInputController.text, firstname: _firstnameInputController.text, lastname: _lastnameInputController.text, phoneNumber: _phonenumberInputController.text,file: _image!);

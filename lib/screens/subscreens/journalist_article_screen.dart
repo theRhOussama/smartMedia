@@ -30,7 +30,7 @@ body: Column(
             Navigator.pushNamed(context, '/journalist/addArticle');
           }, 
         style: ElevatedButton.styleFrom(primary: white,onPrimary: Colors.black),
-     icon: const Icon(Icons.video_camera_front_outlined,color: primaryColor,  ), label: const Text('نشر  صوره / فيديو',style:TextStyle(color:darkColor,fontSize: 18,fontStyle: FontStyle.italic),)),
+     icon: const Icon(Icons.video_camera_front_outlined,color: darkColor,  ), label: const Text('نشر  صوره / فيديو',style:TextStyle(color:darkColor,fontSize: 18,fontStyle: FontStyle.italic),)),
       ),
       
      ),
@@ -42,7 +42,7 @@ body: Column(
           height: 100,
           child: ElevatedButton.icon(onPressed: (){}, 
        style: ElevatedButton.styleFrom(primary: Colors.black),
-       icon: const Icon(Icons.my_library_books_outlined,color: primaryColor,), label: const Text('نشر مقال',style: TextStyle(color: white,fontStyle: FontStyle.italic,fontSize: 15),)),
+       icon: const Icon(Icons.my_library_books_outlined,color: white,), label: const Text('نشر مقال',style: TextStyle(color: white,fontStyle: FontStyle.italic,fontSize: 15),)),
         ),
      
        

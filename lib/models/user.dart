@@ -38,11 +38,12 @@ Map<String,dynamic> toJson()=>{
     email: snapshot['email'],
     firstname: snapshot['firstname'],
     lastname: snapshot['lastname'],
-    followers: snapshot['followers'],
+    followers: snapshot['follower'],
     following: snapshot['following'],
     phoneNumber: snapshot['phoneNumber'],
     typeOfuser: snapshot['typeOfuser'],
     photoUrl: snapshot['photoUrl']
+    
   );
 
  }
