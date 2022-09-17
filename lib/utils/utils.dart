@@ -15,12 +15,7 @@ pickImage(ImageSource source)async{
       return null;
     }
 }
-showSnackBar(String content,BuildContext context)
-{
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text(content))
-  );
-}
+
 showImage(var img) {
   if(img !=null){
     return true;
@@ -29,3 +24,18 @@ showImage(var img) {
    return false;
   }
 }
+showSnackBar(String content,BuildContext context)
+{
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text(content))
+  );
+
+}
+
+  AlertDialog showAlertDialogInPosting(){
+
+    return const AlertDialog(
+      title: Text("Your post is uploading.."),
+      content: Text('pleaseWait'),
+    );
+  }

@@ -48,7 +48,7 @@ class _JournalistHomeScreenState extends State<JournalistHomeScreen> {
                           margin:EdgeInsets.only(right: 5),
                          alignment: Alignment.center,
                         child: const Text(
-                          "كصحفي نشر الصور او مقاطع فيديو سيسمح لك بصناعه محتوى يتير رغبه القارء في التفاعل و كسب  متابعين" ,
+                          "كصحفي نشر                الصور او مقاطع فيديو سيسمح لك بصناعه محتوى يتير رغبه القارء في التفاعل و كسب  متابعين" ,
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(color: white,decorationStyle: TextDecorationStyle.double),)) )
@@ -59,7 +59,9 @@ class _JournalistHomeScreenState extends State<JournalistHomeScreen> {
           Container(
             width: double.infinity,
             color: darkColor,
-            child: Center(child: ElevatedButton.icon(onPressed: (){},icon:Icon(Icons.camera_indoor_outlined), label: Text("نشر صوره"),) ),),
+            child: Center(child: ElevatedButton.icon(onPressed: (){
+              Navigator.pushNamed(context, '/journalist/addArticle');
+            },icon:const Icon(Icons.camera_indoor_outlined), label: Text("نشر صوره"),) ),),
    
              Container(
           color: darkColor,
