@@ -2,7 +2,6 @@
  import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:iconsax/iconsax.dart';
  
 import 'package:smartmedia/screens/feed_screen.dart';
 import 'package:smartmedia/utils/colors.dart';
@@ -105,7 +104,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             ),
 
             const GButton(
-              icon: Iconsax.microphone,
+              icon: Icons.camera_indoor_rounded,
               text: 'صحفي',
             ),
             const GButton(

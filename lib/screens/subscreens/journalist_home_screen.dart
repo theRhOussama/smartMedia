@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:smartmedia/utils/colors.dart';
 
 class JournalistHomeScreen extends StatefulWidget {
@@ -107,7 +106,7 @@ class _JournalistHomeScreenState extends State<JournalistHomeScreen> {
                 child: ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(
-                Iconsax.document1,
+                Icons.dock_rounded,
                 color: white,
               ),
               label: Text("كتابه مقال"),

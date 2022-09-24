@@ -17,9 +17,9 @@ class _JournalistScreentate extends State<JournalistScreen> {
     return DefaultTabController(length: 3, child: 
     Scaffold(appBar: AppBar(title: Text('رواق الصحفي'),backgroundColor: secondColor,centerTitle: true,
     bottom:const  TabBar(tabs: [
-       Tab(text: 'مرحبا',icon: Icon(Iconsax.safe_home5),), 
-      Tab(text: 'أنشر مقالك',icon: Icon(Iconsax.camera),),
-      Tab(text: 'الرصيد الحالي',icon: Icon(Iconsax.money_add),),
+       Tab(text: 'مرحبا',icon: Icon(Icons.home_max),), 
+      Tab(text: 'أنشر مقالك',icon: Icon(Icons.pause_presentation),),
+      Tab(text: 'الرصيد الحالي',icon: Icon(Icons.monetization_on),),
     ]),
     
     ),

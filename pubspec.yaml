@@ -45,6 +45,8 @@ dependencies:
   iconsax: ^0.0.8
   group_button: ^5.2.1
   uuid: ^3.0.6
+  intl: ^0.17.0
+  like_button: ^2.0.4
 
 dev_dependencies:
   flutter_test:

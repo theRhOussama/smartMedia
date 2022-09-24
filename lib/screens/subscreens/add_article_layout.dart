@@ -63,7 +63,7 @@ class _AddArticleLayoutState extends State<AddArticleLayout> {
                       style: TextStyle(color: primaryColor),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/journalist/homeScreen');
+                      Navigator.pop(context);
                     },
                   )
                 ],

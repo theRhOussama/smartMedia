@@ -1,16 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:intl/intl.dart';
+import 'package:like_button/like_button.dart';
+import 'package:provider/provider.dart';
+import 'package:smartmedia/ressources/firestore_methods.dart';
 import 'package:smartmedia/utils/colors.dart';
+import 'package:smartmedia/models/user.dart' as Model;
+
+import '../../providers/user_provider.dart';
 
 class PostCard extends StatelessWidget {
   final snap;
-  const PostCard({Key? key,required this.snap}) : super(key: key);
+  const PostCard({Key? key, required this.snap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Model.User? user = Provider.of<UserProvider>(context).getUser;
+
     return Container(
       color: white,
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -21,10 +26,9 @@ class PostCard extends StatelessWidget {
           child: Row(
             children: [
               // ------------- HEADER SECTION
-               CircleAvatar(
+              CircleAvatar(
                   radius: 16,
-                  backgroundImage: NetworkImage(
-                      snap['profileImage'])),
+                  backgroundImage: NetworkImage(snap['profileImage'])),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -33,7 +37,7 @@ class PostCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                       snap['username'],
+                        snap['username'],
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       )
                     ],
@@ -73,7 +77,7 @@ class PostCard extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.3,
           width: double.infinity,
           child: Image.network(
-              snap['photoPostUrl'],
+            snap['photoPostUrl'],
             filterQuality: FilterQuality.high,
             fit: BoxFit.cover,
           ),
@@ -81,12 +85,24 @@ class PostCard extends StatelessWidget {
         //Like COmment section
         Row(
           children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border,
-                  color: primaryColor,
-                )),
+            LikeButton(
+              size: 25,
+              padding: const EdgeInsets.only(left: 5),
+              bubblesColor: const BubblesColor(
+                dotPrimaryColor: primaryColor,
+                dotSecondaryColor: secondColor,
+              ),
+              
+              onTap: ((isLiked) async {
+            
+                await FireStoreMethods()
+                    .likePost(snap['postId'], user!.uid, snap['likes'],isLiked);
+                    return isLiked;
+                     
+
+                
+              }),
+            ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -95,7 +111,9 @@ class PostCard extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                
+              },
               icon: const Icon(
                 Icons.send_sharp,
                 color: primaryColor,
@@ -134,29 +152,45 @@ class PostCard extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 8),
                 child: RichText(
-                  text:  TextSpan(
+                  text: TextSpan(
                       style: const TextStyle(color: primaryColor),
                       children: [
                         TextSpan(
                           text: snap['username'],
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                         TextSpan(
-                          text: snap['description'],
-                          style: const TextStyle(fontWeight: FontWeight.bold,color: darkColor),
+                        TextSpan(
+                          text: '  ${snap['description']}',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, color: darkColor),
                         )
                       ]),
                 ),
               ),
               InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Text("View all comments",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.grey[800]),),),
+                  child: Text(
+                    "View all comments",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[800]),
+                  ),
+                ),
               ),
               Container(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Text("30/08/2022",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.grey[800]),),),
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Text(
+                  DateFormat.yMMMd()
+                      .format(DateTime.parse(snap['datePublished'])),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[800]),
+                ),
+              ),
             ],
           ),
         )
