@@ -1,8 +1,13 @@
+ 
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:provider/provider.dart';
 import 'package:smartmedia/ressources/firestore_methods.dart';
+import 'package:smartmedia/screens/subscreens/comment_screen.dart';
 import 'package:smartmedia/utils/colors.dart';
 import 'package:smartmedia/models/user.dart' as Model;
 
@@ -84,36 +89,51 @@ class PostCard extends StatelessWidget {
         ),
         //Like COmment section
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          
           children: [
             LikeButton(
-              size: 25,
+              likeBuilder: (value) {
+                List likes = snap['likes'];
+                if (likes.contains(user!.uid)) {
+                  return const Icon(
+                    Icons.favorite_sharp,
+                    color: primaryColor,
+                    size: 32,
+                  );
+                } else {
+                  return const Icon(
+                    Icons.favorite_border,
+                    color: primaryColor,
+                  );
+                }
+              },
+              size: 30,
               padding: const EdgeInsets.only(left: 5),
-              bubblesColor: const BubblesColor(
-                dotPrimaryColor: primaryColor,
-                dotSecondaryColor: secondColor,
-              ),
-              
-              onTap: ((isLiked) async {
-            
-                await FireStoreMethods()
-                    .likePost(snap['postId'], user!.uid, snap['likes'],isLiked);
-                    return isLiked;
-                     
-
-                
+              animationDuration: const Duration(microseconds: 2),
+              onTap: ((value) async {
+                Future<bool> checking = FireStoreMethods()
+                    .likePost(snap['postId'].toString(), user!.uid, snap['likes']);
+                await checking;
+                if (checking as bool == true) {
+                  return !value;
+                }
               }),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>  CommentScreen(
+                     snap: snap['postId'].toString(),
+                    )));
+              },
               icon: const Icon(
                 Icons.comment_sharp,
                 color: primaryColor,
               ),
             ),
             IconButton(
-              onPressed: () {
-                
-              },
+              onPressed: () {},
               icon: const Icon(
                 Icons.send_sharp,
                 color: primaryColor,
@@ -136,23 +156,25 @@ class PostCard extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
+            
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DefaultTextStyle(
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle2!
-                      .copyWith(fontWeight: FontWeight.w800),
-                  child: Text(
-                    '${snap['likes'].length} Likes',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  )),
+              Text(
+                      
+                    '${snap['likes'].length} ',
+                    textAlign: TextAlign.right,
+                 
+                 
+                    style: TextStyle(color: primaryColor,fontWeight: FontWeight.bold),
+                  ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 8),
+                 
                 child: RichText(
                   text: TextSpan(
+
                       style: const TextStyle(color: primaryColor),
                       children: [
                         TextSpan(
@@ -168,13 +190,17 @@ class PostCard extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                //   Navigator.of(context).push(MaterialPageRoute(
+                //       builder: (context) => const CommentScreen()));
+                // },
+                },
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Text(
-                    "View all comments",
+                    "....جميع التعاليق ",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[800]),
                   ),

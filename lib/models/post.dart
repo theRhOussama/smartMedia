@@ -12,7 +12,7 @@ class Post{
   final String description;
   final String photoPostUrl;
   final String datePublished;
-  final  likes; 
+  final dynamic   likes; 
   const Post({
     required this.profileImage,
     required this.likes,//

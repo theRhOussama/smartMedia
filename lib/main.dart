@@ -7,10 +7,8 @@ import 'package:smartmedia/providers/user_provider.dart';
 import 'package:smartmedia/responsive/mobilescreen_layout.dart';
 import 'package:smartmedia/responsive/responsive_layout_screen.dart';
 import 'package:smartmedia/responsive/webscreen_layout.dart';
-import 'package:smartmedia/screens/journalistscreen.dart';
 import 'package:smartmedia/screens/login_screen.dart';
 import 'package:smartmedia/screens/subscreens/add_article_layout.dart';
-import 'package:smartmedia/screens/subscreens/journalist_home_screen.dart';
  import 'package:smartmedia/utils/colors.dart';
  
 void main() async {
@@ -45,6 +43,7 @@ class Home extends StatelessWidget {
     ],
     child: MaterialApp(
     debugShowCheckedModeBanner: false,
+    
         routes: {
           '/journalist/addArticle':(context)=>  const AddArticleLayout(),
                 '/journalist/homeScreen':(context)=>  const MobileScreenLayout(),

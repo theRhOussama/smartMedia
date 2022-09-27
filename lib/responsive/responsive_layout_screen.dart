@@ -5,6 +5,7 @@ import 'package:smartmedia/utils/dimentions.dart';
 
 class ResponsiveLayout extends StatefulWidget {
   final Widget WebScreenLayout;
+  
   final Widget mobileScreenLayout;
 
   // ignore: non_constant_identifier_names

@@ -101,19 +101,23 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             GButton(
               icon: Icons.home,
               text: 'الرئيسيه',
+              iconColor: Colors.grey,
             ),
 
             const GButton(
-              icon: Icons.camera_indoor_rounded,
+              icon: Icons.mic_external_on_sharp,
               text: 'صحفي',
+               iconColor: Colors.grey,
             ),
             const GButton(
               icon: Icons.search,
               text: 'بحت',
+                iconColor: Colors.grey,
             ),
             const GButton(
               icon: Icons.person_pin_circle_sharp,
               text: 'حسابي',
+               iconColor: Colors.grey,
             )
           ],
           onTabChange: (index) => navigationTapped(index),
